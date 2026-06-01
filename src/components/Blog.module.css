@@ -1,0 +1,45 @@
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  border-top: 1px solid var(--border);
+  padding: 1.25rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  cursor: pointer;
+  transition: opacity 0.18s;
+}
+
+.item:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.item:hover {
+  opacity: 0.55;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.meta {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+}
+
+.footnote {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 1.5rem;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.04em;
+}

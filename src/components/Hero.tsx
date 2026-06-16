@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
 
 const VIDEO_URL = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_105406_16f4600d-7a92-4292-b96e-b19156c7830a.mp4'
-const NAV = ['About', 'Projects', 'Skills', 'Awards', 'CV', 'Contact']
+const NAV = ['About', 'Projects', 'Skills', 'Awards', 'Interests', 'Contact']
 
 function scrollTo(id: string) {
   document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })
@@ -13,7 +12,6 @@ function scrollTo(id: string) {
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [menuOpen, setMenuOpen] = useState(false)
-  const navigate = useNavigate()
 
   useEffect(() => {
     const v = videoRef.current
@@ -76,7 +74,7 @@ export default function Hero() {
         <div style={{ display: 'none' }} className="desk-nav">
           {NAV.map(link => (
             <button key={link}
-              onClick={() => link === 'CV' ? navigate('/cv') : scrollTo(link)}
+              onClick={() => scrollTo(link)}
               style={{ borderRadius: 999, padding: '6px 14px', fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.6)', background: 'none', border: 'none', cursor: 'pointer', transition: 'all 0.2s' }}
               onMouseEnter={e => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.background = 'rgba(255,255,255,0.1)' }}
               onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.6)'; e.currentTarget.style.background = 'none' }}>
@@ -101,7 +99,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.18 }}>
             {NAV.map(link => (
               <button key={link}
-                onClick={() => { link === 'CV' ? navigate('/cv') : scrollTo(link); setMenuOpen(false) }}
+                onClick={() => { scrollTo(link); setMenuOpen(false) }}
                 style={{ display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'space-between', padding: '14px 0', fontSize: 15, fontWeight: 600, color: 'rgba(255,255,255,0.75)', background: 'none', border: 'none', borderBottom: '1px solid rgba(255,255,255,0.08)', cursor: 'pointer', fontFamily: 'Inter, sans-serif', boxSizing: 'border-box' }}>
                 {link} <ArrowUpRight size={14} style={{ opacity: 0.4 }} />
               </button>
@@ -126,7 +124,7 @@ export default function Hero() {
           <motion.p
             style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(100,206,251,0.8)', marginBottom: '1.25rem' }}
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.22 }}>
-            Software Engineer
+            Software Engineer · AI Builder
           </motion.p>
 
           {/* Headline */}
@@ -135,15 +133,15 @@ export default function Hero() {
               Scientist turned
             </motion.span>
             <motion.span style={{ display: 'block' }} initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.44, duration: 0.65 }}>
-              <span className="shine-text">engineer.</span>
+              <span className="shine-text">AI Engineer.</span>
             </motion.span>
           </h1>
 
           {/* Tagline */}
           <motion.p
-            style={{ fontSize: 14, fontWeight: 500, color: 'rgba(255,255,255,0.6)', maxWidth: 380, lineHeight: 1.7 }}
+            style={{ fontSize: 14, fontWeight: 500, color: 'rgba(255,255,255,0.6)', maxWidth: 420, lineHeight: 1.7 }}
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.56 }}>
-            Biochemistry and Biotechnology graduate turned software engineer, building backend systems and AI-powered tools.
+            From Biochemistry and Biotechnology to backend systems and agentic AI workflows, driven by one thing: curiosity.
           </motion.p>
         </motion.div>
       </div>
